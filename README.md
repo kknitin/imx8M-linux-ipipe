@@ -8,9 +8,9 @@ You can download the tar ball from here
 https://gitlab.denx.de/Xenomai/ipipe-arm64/-/archive/ipipe-core-4.14.78-arm64-2/ipipe-arm64-ipipe-core-4.14.78-arm64-2.tar.gz
 
 From the root directory of the kernel apply the following patches in the below order (remember to pass -p1 option while patching)
-1. mainline-ipipe-to-imx-ipipe.patch
+1. imx-patches/mainline-ipipe-to-imx-ipipe.patch
 2. ipipe-patches/gpc-psci-ipiped.patch
-3. 0001-uapi-Add-ion.h-to-userspace.patch (this is optional I think)
+3. imx-patches/0001-uapi-Add-ion.h-to-userspace.patch (this is optional I think)
 
 The second patch was the key to solve the hard lockup we faced.
 

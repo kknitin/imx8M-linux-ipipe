@@ -1,18 +1,19 @@
 # imx8M-linux-ipipe
 A rudimentary Linux kernel with ipipe patches for IMX8M SoC
-Thanks to Philippe Gerum's inputs and with some debugging we (me and Sharan yagneswar at MIND music labs, Stockholm) 
+Thanks to Philippe Gerum's inputs and with some debugging we (me and Sharan yagneswar at MIND music labs, Stockholm)
 managed to get a bootable kernel with xenomai on IMX8M mini soc (We used the Compulab module).
 
-The linux-kernel git submodule is mainline kernel for 4.14.y from IMX repository 
-(https://source.codeaurora.org/external/imx/linux-imx; branch = git.kernel.org/linux-stable/linux-4.14.y) 
+Get the ipipe-arm64 kernel for 4.14.78 from the official ipipe-arm64 repo.
+You can download the tar ball from here
+https://gitlab.denx.de/Xenomai/ipipe-arm64/-/archive/ipipe-core-4.14.78-arm64-2/ipipe-arm64-ipipe-core-4.14.78-arm64-2.tar.gz
 
-There are two sets of patches, one for ipipe related stuff and other set is imx related stuff.
-We took the mainline branch andd applied the ipipe patch generated from ipipe-arm64 mainline
-(because at that time the 4.4.78 patch was not avaialable, now it is you can use that I guess)
+From the root directory of the kernel apply the following patches in the below order (remember to pass -p1 option while patching)
+1. mainline-ipipe-to-imx-ipipe.patch
+2. ipipe-patches/gpc-psci-ipiped.patch
+3. 0001-uapi-Add-ion.h-to-userspace.patch (this is optional I think)
 
-Clone  the kernel from above link or just fetch the git submodule contents, then apply the patches in the following order.
-1. ipipe-patches/ipipe-4.14.78.patch
-2. mainline-ipipe-to-imx-ipipe.patch
-3. ipipe-patches/gpc-psci-ipiped.patch
+The second patch was the key to solve the hard lockup we faced.
 
-The last patch was the key to solve the hard lockup we faced.
+Note: I haven't tested to build with these patches and test but we use the same patches in our yocto recipes so should work.
+
+

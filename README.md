@@ -11,6 +11,7 @@ From the root directory of the kernel apply the following patches in the below o
 1. imx-patches/mainline-ipipe-to-imx-ipipe.patch
 2. ipipe-patches/gpc-psci-ipiped.patch
 3. imx-patches/0001-uapi-Add-ion.h-to-userspace.patch (this is optional I think)
+4. imx-patches/0021-fix-irq-unlock-issue.patch (this is needed for compilation)
 
 The second patch was the key to solve the hard lockup we faced.
 
